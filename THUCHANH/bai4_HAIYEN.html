@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu mẫu thông tin nhân viên</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            background-color: hsl(323, 63%, 84%);
+            color: #000;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        /* Form Container */
+        .form-container {
+            width: 580px;
+            border: 1px solid #c5c5c5;
+            padding: 8px 15px 15px 15px;
+            background-color: #f7f7f7;
+        }
+
+        /* Section Styles */
+        .form-section h3 {
+            font-size: 14px;
+            font-weight: bold;
+            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 5px;
+            margin: 15px 0 12px 0;
+            color: #333;
+        }
+        
+
+        /* Form Row Layout */
+        .form-row {
+            display: flex;
+            margin-bottom: 6px;
+            min-height: 28px;
+        }
+
+        /* Label Styles */
+        .form-row > label {
+            width: 140px;
+            text-align: right;
+            padding-right: 10px;
+            padding-left: 0;
+            padding-top: 5px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .input-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column; 
+        }
+        
+        .form-static-text {
+            padding: 5px 0;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Input, Select, Textarea Styles */
+        input[type="text"],
+        select {
+            padding: 4px 6px;
+            border: 1px solid #abacb3;
+            font-family: inherit;
+            font-size: 12px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        
+        .country-select {
+            width: 65% !important; 
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        .input-icon {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #555;
+            font-family: "Segoe UI Symbol", sans-serif;
+            cursor: pointer;
+        }
+        .icon-birthdate { font-weight: bold; color: #777; }
+        .icon-reports-to { font-size: 16px; }
+        .icon-firstname { opacity: 0.6; }
+
+        /* Option Groups */
+        .option-group-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding-top: 5px;
+        }
+        .option-group-vertical div {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .option-group-vertical label {
+            font-weight: normal;
+        }
+        
+        .align-top {
+            align-items: flex-start;
+        }
+
+        /* Notes/Editor Section */
+        .editor-container {
+            width: 100%;
+        }
+        .editor-toolbar {
+            width: 100%;
+            height: 29px;
+            background: url('https://i.imgur.com/gK98hZZ.png') no-repeat;
+            background-size: contain;
+            border: 1px solid #abacb3;
+            border-bottom: none;
+            box-sizing: border-box;
+        }
+        textarea {
+            width: 100%;
+            height: 65px;
+            padding: 5px;
+            border: 1px solid #252a4d;
+            font-family: inherit;
+            font-size: 12px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        /* ----- SỬA ĐỔI PHẦN CAPTCHA TẠI ĐÂY ----- */
+        .captcha-image {
+            font-family: "Courier New", monospace;
+            font-size: 26px;
+            font-weight: 500;
+            color: #ae7575;
+            letter-spacing: 5px;
+            padding-top: 3px;
+            margin-bottom: 2px;
+        }
+        .captcha-change-link {
+            text-align: right;
+            padding-right: 25px; /* Adjust alignment to match image */
+        }
+        .captcha-change-link a {
+            font-size: 11px;
+            color: #0033cc;
+            text-decoration: none;
+        }
+        .captcha-change-link a:hover {
+            text-decoration: underline;
+        }
+        /* ----- KẾT THÚC SỬA ĐỔI CAPTCHA ----- */
+
+        /* Footer and Buttons */
+        .page-footer {
+            margin-top: 15px;
+        }
+        .footer-divider {
+            border: 0;
+            border-top: 1px solid #dcdcdc;
+            margin: 0 0 8px 0;
+        }
+        .nav-arrows {
+            padding-left: 2px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .actions-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .required-note {
+            font-size: 12px;
+        }
+        .button-container {
+            display: flex;
+            gap: 6px;
+        }
+        button {
+            padding: 4px 10px;
+            border: 1px solid #adadad;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 12px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+        button.submit {
+            background-color: #333;
+            color: #fff;
+            border-color: #111;
+            padding-left: 8px;
+        }
+        button.cancel {
+            padding-left: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <form action="#" method="post">
+
+            <!-- Basic Info Section -->
+            <div class="form-section">
+                <h3>Basic Info</h3>
+                <div class="form-row"><label>Employee ID</label><div class="input-wrapper"><div class="form-static-text">9</div></div></div>
+                <div class="form-row"><label>Last Name</label><div class="input-wrapper"><div class="form-static-text">Dodsworth</div></div></div>
+                <div class="form-row"><label>First Name</label><div class="input-wrapper input-with-icon"><input type="text" value="Anne"><span class="input-icon icon-firstname">🖼️</span></div></div>
+                <div class="form-row align-top"><label>Gender</label><div class="input-wrapper"><div class="option-group-vertical"><div><input type="radio" name="gender"><label>Male</label></div><div><input type="radio" name="gender"><label>Female</label></div><div><input type="radio" name="gender"><label>XXX</label></div><div><input type="radio" name="gender" checked><label>ZZZ</label></div></div></div></div>
+                <div class="form-row"><label>Title</label><div class="input-wrapper"><input type="text" value="Sales Representative"></div></div>
+                <div class="form-row"><label>Suffix</label><div class="input-wrapper"><input type="text" value="Ms."></div></div>
+                <div class="form-row"><label>BirthDate</label><div class="input-wrapper input-with-icon"><input type="text" value="1969-07-02 00:00:00"><span class="input-icon icon-birthdate">(?)</span></div></div>
+                <div class="form-row"><label>HireDate</label><div class="input-wrapper"><input type="text" value="1994-11-15 00:00:00"></div></div>
+                <div class="form-row"><label>SSN # (if applicable)</label><div class="input-wrapper"><input type="text"></div></div>
+ 
+                <div class="form-row"><label>Reports To</label><div class="input-wrapper"><select class="country-select"><option selected>Buchanan</option></select></div></div>
+            </div>
+
+            <!-- Contact Info Section -->
+            <div class="form-section">
+                <h3>Contact Info</h3>
+                <div class="form-row"><label>Email</label><div class="input-wrapper"><input type="text" value="name@example.com"></div></div>
+                <div class="form-row"><label>Address</label><div class="input-wrapper"><input type="text" value="7 Houndstooth Rd."></div></div>
+                <div class="form-row"><label>City</label><div class="input-wrapper"><input type="text" value="London"></div></div>
+                <div class="form-row"><label>Region</label><div class="input-wrapper"><input type="text"></div></div>
+                <div class="form-row"><label>Postal Code</label><div class="input-wrapper"><input type="text" value="WG2 7LT"></div></div>
+                <div class="form-row"><label>Country</label><div class="input-wrapper"><select class="country-select"><option selected>Russian Federation</option></select></div></div>
+                <div class="form-row"><label>US Home Phone</label><div class="input-wrapper"><input type="text" value="(234)234-2342"></div></div>
+                <div class="form-row"><label>Photo</label><div class="input-wrapper"><input type="text" value="EmpID9.bmp"></div></div>
+            </div>
+
+            <!-- Optional Info Section -->
+            <div class="form-section">
+                <h3>Optional Info</h3>
+                
+                <div class="form-row">
+                    <label for="notes">Notes</label>
+                    <div class="notes-container">
+                        <div class="toolbar">
+                            <button type="button" title="Bold"><strong>B</strong></button>
+                            <button type="button" title="Italic"><em>I</em></button>
+                            <button type="button" title="Underline"><u>U</u></button>
+                            <button type="button" title="Align Left">≡</button>
+                            <button type="button" title="Align Center">≡</button>
+                            <button type="button" title="Align Right">≡</button>
+                            <button type="button" title="Bullet List">•</button>
+                            <button type="button" title="Number List">1.</button>
+                            <button type="button" title="Link">🔗</button>
+                            <button type="button" title="Image">🖼</button>
+                            <button type="button" title="Table">⊞</button>
+                            <button type="button" title="Font Size">A</button>
+                            <button type="button" title="Clear">✕</button>
+                        </div>
+                        <textarea class="notes-textarea" id="notes" name="notes" placeholder="Enter notes here...">Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German ZZZ</textarea>
+                    </div>
+                </div>
+                <div class="form-row align-top"><label>Preferred Shift</label><div class="input-wrapper"><div class="option-group-vertical"><div><input type="checkbox"><label>Regular</label></div><div><input type="checkbox" checked><label>Gravy Yard</label></div></div></div></div>
+                <div class="form-row"><label>Active?</label><div class="input-wrapper"><div style="padding-top: 5px;"><input type="checkbox" checked></div></div></div>
+                
+                <!-- Cấu trúc CAPTCHA mới -->
+                <div class="form-row align-top">
+                    <label>Are you human?</label>
+                    <div class="input-wrapper">
+                        <div class="captcha-image">TIDAWO</div>
+                        <div class="captcha-change-link">
+                            <a href="#">Click to change</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label></label> <!-- Nhãn trống để căn lề -->
+                    <div class="input-wrapper">
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="page-footer">
+                <hr class="footer-divider">
+                <div class="nav-arrows"><span>◀ ▶</span></div>
+                <div class="actions-row">
+                    <span class="required-note">* required</span>
+                    <div class="button-container">
+                        <button type="submit" class="submit">✔ Submit</button>
+                        <button type="button" class="cancel">✘ Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+   
+                
+
+</body>
+</html>
