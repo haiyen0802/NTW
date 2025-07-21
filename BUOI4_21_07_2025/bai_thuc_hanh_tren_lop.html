@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý sinh viên</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f7f9fc;
+    }
+
+    header {
+      background-color: #060606fb;
+      color: rgb(238, 159, 205);
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    form {
+      background-color: #f2c5c5;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(77, 43, 198, 0.15);
+    }
+
+    form input,
+    form textarea {
+      border-radius: 8px;
+    }
+
+    form textarea {
+      resize: vertical;
+    }
+
+    .btn-pink {
+      background: linear-gradient(135deg, #090808, #060606fb);
+      color: #f6bde3;
+      font-weight: bold;
+      border: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn-pink:hover {
+      background: linear-gradient(135deg, #eecbe7, #d691b2);
+      color: white;
+    }
+
+    table {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    thead {
+      background-color: #080809;
+      color: #f6bfed;
+    }
+
+    tbody > tr:hover td {
+      background-color: #f3c4c4 !important;
+      color: white;
+    }
+
+    .action-buttons button {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>Quản lý sinh viên</header>
+
+  <div class="container">
+    <div class="row g-4">
+      <!-- Form bên trái -->
+      <div class="col-lg-5">
+        <form>
+            
+          <div class="mb-3">
+            <label for="maSV" class="form-label">Mã sinh viên:</label>
+            <input type="text" class="form-control" id="maSV" name="maSV" required>
+          </div>
+          <div class="mb-3">
+            <label for="hoTen" class="form-label">Họ và tên:</label>
+            <input type="text" class="form-control" id="hoTen" name="hoTen" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="ngaySinh" class="form-label">Ngày sinh:</label>
+            <input type="date" class="form-control" id="ngaySinh" name="ngaySinh">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Giới tính:</label><br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="nam" name="gioiTinh" value="Nam">
+              <label class="form-check-label" for="nam">Nam</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="nu" name="gioiTinh" value="Nữ">
+              <label class="form-check-label" for="nu">Nữ</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="ghiChu" class="form-label">Ghi chú:</label>
+            <textarea class="form-control" id="ghiChu" name="ghiChu" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-pink w-100">Thêm sinh viên</button>
+        </form>
+      </div>
+
+      <!-- Bảng bên phải -->
+      <div class="col-lg-7">
+        <table class="table table-bordered table-hover">
+            
+          <thead>
+           <tr>
+            <th colspan="7" class="text-center fs-5" style="background-color: #060606fb; color: #ee9fcd; font-weight: bold;">Danh sách sinh viên
+            </th>
+            </tr>
+            <tr>
+              <th>STT</th>
+              <th>Mã SV</th>
+              <th>Họ tên</th>
+              <th>Email</th>
+              <th>Giới tính</th>
+              <th>Ngày sinh</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>SV001</td>
+              <td>Nguyen Van A</td>
+              <td>a@example.com</td>
+              <td>Nam</td>
+              <td>2000-01-01</td>
+              <td class="action-buttons">
+                <button class="btn btn-success btn-sm">Sửa</button>
+                <button class="btn btn-danger btn-sm">Xoá</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>SV002</td>
+              <td>Nguyen Van B</td>
+              <td>b@example.com</td>
+              <td>Nữ</td>
+              <td>2002-01-01</td>
+              <td class="action-buttons">
+                <button class="btn btn-success btn-sm">Sửa</button>
+                <button class="btn btn-danger btn-sm">Xoá</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
