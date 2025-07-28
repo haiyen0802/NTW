@@ -1,0 +1,75 @@
+body {
+  background: #f7f9fc;
+}
+
+header {
+  background-color: #060606fb;
+  color: rgb(238, 159, 205);
+  padding: 15px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+/* Vùng hiển thị thông báo */
+#notification {
+  display: none; /* Ẩn mặc định */
+  transition: opacity 0.5s ease;
+}
+
+form {
+  background-color: #f2c5c5;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(77, 43, 198, 0.15);
+}
+
+form input,
+form textarea {
+  border-radius: 8px;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+.btn-pink {
+  background: linear-gradient(135deg, #090808, #060606fb);
+  color: #f6bde3;
+  font-weight: bold;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.btn-pink:hover {
+  background: linear-gradient(135deg, #eecbe7, #d691b2);
+  color: white;
+}
+
+table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #080809;
+  color: #f6bfed;
+}
+
+tbody > tr:hover td {
+  background-color: #f3c4c4 !important;
+  color: #333;
+}
+
+.action-buttons button {
+  margin-right: 5px;
+}
+
+/* Style cho các input không hợp lệ */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
